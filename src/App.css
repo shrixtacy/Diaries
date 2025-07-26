@@ -1,0 +1,26 @@
+.App {
+  min-height: 100vh;
+  background: transparent;
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Global section styling */
+section {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 1rem;
+  }
+}
