@@ -13,12 +13,22 @@ body {
     height: 100vh;
     width: 100vw;
 	overflow: hidden;
-	background: #000000;
+	background: url('images/Untitled design.jpg') center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 
 .flipbook {
     width: 1000px;
     height: 600px;
+    position: relative;
+}
+
+/* Ensure all corners are draggable */
+.flipbook .page {
+    position: relative;
+    cursor: pointer;
 }
 
 .flipbook .hard {
@@ -26,6 +36,8 @@ body {
     color: #333;
     font-weight: bold;
     border: none; 
+    position: relative;
+    cursor: pointer;
 }
 
 .flipbook .hard small{
@@ -44,10 +56,6 @@ body {
 	left: 0;
 }
 
-.flipbook .hard {
-	position: relative;
-}
-
 .flipbook .page {
     background: white;
 	display: flex;
@@ -56,6 +64,7 @@ body {
 	align-items: center;
     gap: 10px;
     border: 1px solid rgba(0, 0, 0, 0.11);
+    position: relative;
 }
 
 .page img{
@@ -68,5 +77,106 @@ body {
 .flipbook .page small{
 	font-size: 14px;
     margin-bottom: 10px;
+}
+
+/* Specific corner styling for better dragging */
+.flipbook .page-wrapper {
+    position: relative;
+    overflow: visible;
+}
+
+.flipbook .page-wrapper .page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Ensure top right corner is draggable */
+.flipbook .page-wrapper .page:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    z-index: 10;
+    cursor: pointer;
+}
+
+/* Turn Page Overlay Styles */
+.turn-page-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.turn-page-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.turn-page-content {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: pulse 2s ease-in-out infinite;
+    pointer-events: auto;
+}
+
+.turn-page-message {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.turn-page-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.turn-page-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.turn-page-btn:active {
+    transform: translateY(0);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
 }
 
