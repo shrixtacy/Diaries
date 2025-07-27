@@ -22,22 +22,38 @@ const SpotlightSection = () => {
       description: "How one woman's vision to solve water scarcity led to a global movement affecting millions of lives across three continents.",
       image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=500&h=400&fit=crop",
       category: "Social Impact"
+    },
+    {
+      id: 3,
+      title: "Creative Visionary",
+      name: "Sarah Chen",
+      description: "Transforming digital art through innovative AI-driven design tools that empower creators worldwide.",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&h=400&fit=crop",
+      category: "Creative Arts"
+    },
+    {
+      id: 4,
+      title: "Healthcare Revolutionary",
+      name: "Dr. James Wilson",
+      description: "Pioneering telemedicine solutions that bring quality healthcare to remote communities globally.",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&h=400&fit=crop",
+      category: "Healthcare"
     }
   ];
 
   return (
     <section id="spotlight" className="spotlight-section" ref={ref}>
+      {/* Background Spotlight Image */}
+      <div className="spotlight-background-image">
+        <img 
+          src="/images2/spotlights.png" 
+          alt="Spotlight" 
+          className="spotlight-bg-img"
+        />
+      </div>
+      
       <div className="spotlight-container">
         <div className="spotlight-layout">
-          <motion.div 
-            className="spotlight-header"
-            initial={{ opacity: 0, x: -100 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="spotlight-title">SPOTLIGHT</h2>
-          </motion.div>
-          
           <div className="spotlight-grid">
             {spotlightItems.map((item, index) => (
               <motion.div
@@ -46,7 +62,7 @@ const SpotlightSection = () => {
                 initial={{ opacity: 0, y: 100, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 100, scale: 0.8 }}
                 transition={{ 
-                  delay: 0.3 + (index * 0.2), 
+                  delay: 0.3 + (index * 0.1), 
                   duration: 0.8,
                   ease: 'easeOut'
                 }}
@@ -94,7 +110,6 @@ const SpotlightSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ delay: 1, duration: 0.8 }}
         >
-          <p>Celebrating the visionaries who dare to dream and build the future</p>
         </motion.div>
         <div className="gradient-3"></div>
         <div className="gradient-4"></div>

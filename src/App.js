@@ -3,7 +3,8 @@ import Loader from './components/Loader';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import SpotlightSection from './components/SpotlightSection';
-import ExtraSection from './components/ExtraSection';
+import QuoteSection from './components/QuoteSection';
+import CTASection from './components/ExtraSection';
 import Footer from './components/Footer';
 import FlipbookSection from './components/flipbook/FlipbookSection';
 import { ThemeProvider } from './context/ThemeContext';
@@ -33,7 +34,8 @@ function App() {
               <HeroSection />
               <FlipbookSection />
               <SpotlightSection />
-              <ExtraSection />
+              <QuoteSection />
+              <CTASection />
             </main>
             <Footer />
           </>

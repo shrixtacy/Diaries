@@ -52,9 +52,6 @@
     <div>
       <img src="images/Weekly Zodiac Tarot 12.jpg" alt="Zodiac Tarot Card 12" />
     </div>
-    <div>
-      <img src="images/Weekly Zodiac Tarot 13.jpg" alt="Zodiac Tarot Card 13" />
-    </div>
     <div class="hard">
       <img src="images/Weekly Zodiac Tarot 12.jpg" alt="Second to Last - Zodiac Tarot Card 12" />
     </div>
@@ -63,21 +60,75 @@
     </div>
   </div>
 
+  <!-- Turn Page Overlay -->
+  <div id="turnPageOverlay" class="turn-page-overlay">
+    <div class="turn-page-content">
+      <p class="turn-page-message">Click to turn the page</p>
+      <button id="turnPageBtn" class="turn-page-btn">Turn Page</button>
+    </div>
+  </div>
+
   <script src="jquery.js"></script>
   <script src="turn.js"></script>
   <script>
     $(document).ready(function() {
-      $(".flipbook").turn({
+      let flipbook = $(".flipbook").turn({
         width: 1000,
         height: 600,
         autoCenter: true,
         acceleration: true,
         elevation: 50,
         gradients: true,
+        turnCorners: 'page', // Enable all corner turning
         when: {
           turning: function(event, page, view) {
             console.log('Turning to page:', page);
+            $('#turnPageOverlay').fadeOut(300);
+          },
+          turned: function(event, page, view) {
+            setTimeout(() => {
+              if (page < flipbook.turn('pages')) {
+                $('#turnPageOverlay').fadeIn(500);
+              }
+            }, 1000);
+          },
+          start: function(event, pageObject, corner) {
+            // Ensure all corners work properly
+            console.log('Starting turn from corner:', corner);
           }
+        }
+      });
+
+      // Turn page button functionality
+      $('#turnPageBtn').click(function() {
+        flipbook.turn('next');
+      });
+
+      // Function to slowly open the flipbook
+      function slowlyOpenFlipbook() {
+        let currentPage = 1;
+        const targetPage = 3;
+        const pageInterval = 800;
+        
+        const turnNextPage = () => {
+          if (currentPage < targetPage) {
+            currentPage++;
+            flipbook.turn('page', currentPage);
+            setTimeout(turnNextPage, pageInterval);
+          } else {
+            setTimeout(() => {
+              $('#turnPageOverlay').fadeIn(500);
+            }, 1000);
+          }
+        };
+        
+        setTimeout(turnNextPage, 500);
+      }
+
+      // Listen for messages from parent window
+      window.addEventListener('message', function(event) {
+        if (event.data.type === 'openFlipbook') {
+          slowlyOpenFlipbook();
         }
       });
     });
