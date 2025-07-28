@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,9 +18,11 @@ const Navbar = () => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (location.pathname === '/') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -30,14 +34,14 @@ const Navbar = () => {
       transition={{ duration: 0.8, ease: 'easeOut' }}
     >
       <div className="navbar-content">
-        <motion.a 
-          href="#home" 
-          className="logo"
+        <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          Diaries
-        </motion.a>
+          <Link to="/" className="logo">
+            Diaries
+          </Link>
+        </motion.div>
         
         <ul className="nav-links">
           <motion.li
@@ -45,64 +49,72 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <a 
-              href="#home" 
+            <Link 
+              to="/" 
               className="nav-link"
               onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('hero');
+                if (location.pathname === '/') {
+                  e.preventDefault();
+                  scrollToSection('hero');
+                }
               }}
             >
               Home
-            </a>
+            </Link>
           </motion.li>
           <motion.li
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            <a 
-              href="#stories" 
+            <Link 
+              to="/" 
               className="nav-link"
               onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('spotlight');
+                if (location.pathname === '/') {
+                  e.preventDefault();
+                  scrollToSection('spotlight');
+                }
               }}
             >
               Stories
-            </a>
+            </Link>
           </motion.li>
           <motion.li
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
           >
-            <a 
-              href="#spotlight" 
+            <Link 
+              to="/spotlights" 
               className="nav-link"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('spotlight');
-              }}
             >
-              Spotlight
-            </a>
+              All Spotlights
+            </Link>
           </motion.li>
           <motion.li
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.5 }}
           >
-            <a 
-              href="#about" 
+            <Link 
+              to="/gallery" 
               className="nav-link"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('extra');
-              }}
+            >
+              Gallery
+            </Link>
+          </motion.li>
+          <motion.li
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+          >
+            <Link 
+              to="/about" 
+              className="nav-link"
             >
               About
-            </a>
+            </Link>
           </motion.li>
         </ul>
       </div>
