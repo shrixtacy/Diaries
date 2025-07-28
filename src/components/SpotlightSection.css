@@ -7,6 +7,58 @@
   overflow: hidden;
 }
 
+/* View More Spotlights Section */
+.view-more-spotlights {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 25;
+}
+
+.view-more-link {
+  display: inline-block;
+}
+
+.view-more-link-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.view-more-link-content:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.arrow-icon {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff77e9;
+  animation: arrowBounce 2s ease-in-out infinite;
+}
+
+.view-more-text {
+  font-family: 'Comfortaa', cursive;
+  letter-spacing: 0.05em;
+}
+
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
 /* Background Spotlight Image */
 .spotlight-background-image {
   position: absolute;
@@ -27,6 +79,30 @@
   max-width: none;
   object-fit: contain;
   opacity: 1; /* Full opacity */
+  filter: brightness(1) contrast(1); /* Normal visibility */
+}
+
+/* PEOPLE.gif Background Image */
+.people-background-image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5; /* Behind the spotlight background but above gradients */
+  pointer-events: none;
+}
+
+.people-bg-img {
+  position: absolute;
+  bottom: 0;
+  right: 10%; /* Move a bit to the left from the right edge */
+  width: auto;
+  height: auto;
+  max-height: 50vh; /* Even smaller size */
+  max-width: 70%; /* Limit width to keep some space on left */
+  object-fit: contain;
+  opacity: 1; /* Full opacity - no transparency change */
   filter: brightness(1) contrast(1); /* Normal visibility */
 }
 

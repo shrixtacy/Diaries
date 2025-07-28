@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import './SpotlightSection.css';
 
 const SpotlightSection = () => {
@@ -52,7 +53,35 @@ const SpotlightSection = () => {
         />
       </div>
       
+      {/* PEOPLE.gif positioned at bottom behind top components */}
+      <div className="people-background-image">
+        <img 
+          src="/images2/PEOPLE.gif" 
+          alt="People" 
+          className="people-bg-img"
+        />
+      </div>
+      
       <div className="spotlight-container">
+        {/* View More Spotlights Header */}
+        <motion.div 
+          className="view-more-spotlights"
+          initial={{ opacity: 0, y: -30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          <motion.div
+            className="view-more-link"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link to="/spotlights" className="view-more-link-content">
+              <span className="arrow-icon">↑</span>
+              <span className="view-more-text">View More Spotlights</span>
+            </Link>
+          </motion.div>
+        </motion.div>
+
         <div className="spotlight-layout">
           <div className="spotlight-grid">
             {spotlightItems.map((item, index) => (
