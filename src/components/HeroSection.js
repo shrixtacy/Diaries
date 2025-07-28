@@ -33,9 +33,6 @@ const HeroSection = () => {
           const flipbookHeight = flipbookRect.height;
           const windowHeight = window.innerHeight;
           
-          // Get the current scroll position
-          const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-          
           // Calculate the target scroll position to center the flipbook
           const flipbookTop = flipbookSection.offsetTop;
           const targetScroll = flipbookTop - (windowHeight / 2) + (flipbookHeight / 2);
