@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Masonry from 'react-masonry-css';
 import { motion } from 'framer-motion';
 import './MasonryGallery.css';
 
 const MasonryGallery = () => {
   const [hoveredImage, setHoveredImage] = useState(null);
-  const [scrollDirection, setScrollDirection] = useState('up');
   const [selectedImage, setSelectedImage] = useState(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -144,10 +143,7 @@ const MasonryGallery = () => {
     setSelectedImage(null);
   };
 
-  // Infinite scrolling animation effect - only scroll down
-  useEffect(() => {
-    setScrollDirection('down');
-  }, []);
+
 
   // Duplicate images for infinite scrolling effect
   const extendedImages = [...images, ...images, ...images];
@@ -221,7 +217,7 @@ const MasonryGallery = () => {
               </div>
             </motion.div>
           );
-        })}
+        })};
         </Masonry>
       </div>
 
