@@ -33,6 +33,17 @@ const AboutUs = () => {
   ], []);
 
   const sectionRefs = useRef([]);
+  const section1Ref = useRef(null);
+  const section2Ref = useRef(null);
+  const section3Ref = useRef(null);
+  const section4Ref = useRef(null);
+  const section5Ref = useRef(null);
+  
+  const section1InView = useInView(section1Ref, { once: false, threshold: 0.3 });
+  const section2InView = useInView(section2Ref, { once: false, threshold: 0.3 });
+  const section3InView = useInView(section3Ref, { once: false, threshold: 0.3 });
+  const section4InView = useInView(section4Ref, { once: false, threshold: 0.3 });
+  const section5InView = useInView(section5Ref, { once: false, threshold: 0.3 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,7 +83,7 @@ const AboutUs = () => {
         const timer = setTimeout(() => {
           setTypedText(currentText.slice(0, charIndex + 1));
           setCharIndex(charIndex + 1);
-        }, 30); // Faster typing speed
+        }, 30);
 
         return () => clearTimeout(timer);
       } else {
@@ -127,74 +138,62 @@ const AboutUs = () => {
     }
   };
 
-  // Create refs for each section
-  const sectionRefsArray = [
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null),
-    useRef(null)
-  ];
-  
-  const sectionInViewArray = [
-    useInView(sectionRefsArray[0], { once: false, threshold: 0.3 }),
-    useInView(sectionRefsArray[1], { once: false, threshold: 0.3 }),
-    useInView(sectionRefsArray[2], { once: false, threshold: 0.3 }),
-    useInView(sectionRefsArray[3], { once: false, threshold: 0.3 }),
-    useInView(sectionRefsArray[4], { once: false, threshold: 0.3 })
-  ];
+  const renderSection = (section, index, ref, isInView) => {
+    const isActive = currentSection === index;
+    
+    return (
+      <motion.section
+        key={index}
+        ref={el => {
+          sectionRefs.current[index] = el;
+          if (ref.current) ref.current = el;
+        }}
+        className={`about-section ${isActive ? 'active' : ''}`}
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0.3 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="section-content">
+          <motion.h1 
+            className="section-title"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
+            {section.title.split(' ').map((word, wordIndex) => (
+              <motion.span
+                key={wordIndex}
+                className="title-word"
+                variants={titleVariants}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </motion.h1>
+          
+          {isActive && (
+            <motion.div 
+              className="section-text"
+              variants={textVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+            >
+              <span className="typed-text">{typedText}</span>
+              {isTyping && <span className="cursor">|</span>}
+            </motion.div>
+          )}
+        </div>
+      </motion.section>
+    );
+  };
 
   return (
     <div className="about-us-container">
-      {sections.map((section, index) => {
-        const isActive = currentSection === index;
-        const isInView = sectionInViewArray[index];
-        
-        return (
-          <motion.section
-            key={index}
-            ref={el => {
-              sectionRefs.current[index] = el;
-              sectionRefsArray[index].current = el;
-            }}
-            className={`about-section ${isActive ? 'active' : ''}`}
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0.3 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="section-content">
-              <motion.h1 
-                className="section-title"
-                variants={containerVariants}
-                initial="hidden"
-                animate={isInView ? "visible" : "hidden"}
-              >
-                {section.title.split(' ').map((word, wordIndex) => (
-                  <motion.span
-                    key={wordIndex}
-                    className="title-word"
-                    variants={titleVariants}
-                  >
-                    {word}
-                  </motion.span>
-                ))}
-              </motion.h1>
-              
-              {isActive && (
-                <motion.div 
-                  className="section-text"
-                  variants={textVariants}
-                  initial="hidden"
-                  animate={isInView ? "visible" : "hidden"}
-                >
-                  <span className="typed-text">{typedText}</span>
-                  {isTyping && <span className="cursor">|</span>}
-                </motion.div>
-              )}
-            </div>
-          </motion.section>
-        );
-      })}
+      {renderSection(sections[0], 0, section1Ref, section1InView)}
+      {renderSection(sections[1], 1, section2Ref, section2InView)}
+      {renderSection(sections[2], 2, section3Ref, section3InView)}
+      {renderSection(sections[3], 3, section4Ref, section4InView)}
+      {renderSection(sections[4], 4, section5Ref, section5InView)}
     </div>
   );
 };
