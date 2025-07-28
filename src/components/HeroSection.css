@@ -11,16 +11,85 @@
   transition: background-color 0.3s ease;
 }
 
+/* Pen GIF Background Overlay */
+.pen-gif-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+.pen-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  mix-blend-mode: normal;
+}
+
+/* Book Page GIF Top Left Corner */
+.book-page-overlay {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  z-index: 4;
+  pointer-events: none;
+  animation: bookFloat 4s ease-in-out infinite;
+}
+
+.book-page-gif {
+  max-width: 300px;
+  height: auto;
+  opacity: 1;
+  mix-blend-mode: normal;
+}
+
+@keyframes bookFloat {
+  0%, 100% { 
+    transform: translate(0, 0) rotate(0deg); 
+  }
+  25% { 
+    transform: translate(5px, -8px) rotate(1deg); 
+  }
+  50% { 
+    transform: translate(-3px, -12px) rotate(-1deg); 
+  }
+  75% { 
+    transform: translate(8px, -6px) rotate(0.5deg); 
+  }
+}
+
+/* GIF Overlay */
+.gif-overlay {
+  position: absolute;
+  top: 15%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+  pointer-events: none;
+}
+
+.hero-gif {
+  max-width: 100%;
+  height: auto;
+  opacity: 1;
+  mix-blend-mode: screen;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
 .hero-section::before {
   content: '';
   position: absolute;
-  top: 8%;
-  right: 15%;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(255, 119, 233, 0.15) 0%, rgba(255, 119, 233, 0.06) 40%, transparent 70%);
-  border-radius: 50%;
-  animation: heroFloat 18s ease-in-out infinite;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
 .hero-section::after {
@@ -33,6 +102,7 @@
   background: radial-gradient(circle, rgba(102, 126, 234, 0.18) 0%, rgba(102, 126, 234, 0.08) 40%, transparent 70%);
   border-radius: 50%;
   animation: heroFloat 22s ease-in-out infinite reverse;
+  z-index: 2;
 }
 
 .hero-section .gradient-3 {
@@ -45,6 +115,7 @@
   background: radial-gradient(circle, rgba(255, 119, 233, 0.12) 0%, rgba(102, 126, 234, 0.06) 40%, transparent 70%);
   border-radius: 50%;
   animation: heroFloat 16s ease-in-out infinite;
+  z-index: 2;
 }
 
 @keyframes heroFloat {
@@ -55,6 +126,8 @@
 .hero-content {
   max-width: 1000px;
   margin: 0 auto;
+  position: relative;
+  z-index: 10;
 }
 
 .hero-title {
@@ -65,6 +138,7 @@
   font-family: 'Comfortaa', cursive;
   color: var(--text-primary);
   transition: color 0.3s ease;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-word {
@@ -82,6 +156,7 @@
   margin-right: auto;
   color: var(--text-secondary);
   transition: color 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hero-cta {
@@ -113,12 +188,14 @@
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 10;
 }
 
 .scroll-arrow {
   font-size: 2rem;
   color: var(--text-secondary);
   transition: color 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 768px) {
@@ -134,5 +211,25 @@
   .cta-button {
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
+  }
+  
+  .hero-gif {
+    max-width: 80%;
+  }
+  
+  .gif-overlay {
+    left: 60%;
+    top: 10%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-gif {
+    max-width: 70%;
+  }
+  
+  .gif-overlay {
+    left: 55%;
+    top: 8%;
   }
 }
