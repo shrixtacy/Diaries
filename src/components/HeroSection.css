@@ -199,13 +199,19 @@
 }
 
 @media (max-width: 768px) {
+  .hero-section {
+    padding-top: 60px;
+  }
+
   .hero-title {
-    font-size: 3.5rem;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
   }
 
   .hero-subtitle {
     font-size: 1rem;
     white-space: normal;
+    margin-bottom: 2rem;
   }
 
   .cta-button {
@@ -221,9 +227,36 @@
     left: 60%;
     top: 10%;
   }
+
+  .book-page-gif {
+    max-width: 200px;
+  }
+
+  .book-page-overlay {
+    top: 30px;
+  }
 }
 
 @media (max-width: 480px) {
+  .hero-section {
+    padding-top: 50px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
   .hero-gif {
     max-width: 70%;
   }
@@ -231,5 +264,40 @@
   .gif-overlay {
     left: 55%;
     top: 8%;
+  }
+
+  .book-page-gif {
+    max-width: 150px;
+  }
+
+  .book-page-overlay {
+    top: 20px;
+  }
+
+  .hero-scroll-indicator {
+    bottom: 1rem;
+  }
+
+  .scroll-arrow {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .cta-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .book-page-gif {
+    max-width: 120px;
   }
 }

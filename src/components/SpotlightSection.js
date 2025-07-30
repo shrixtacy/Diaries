@@ -45,13 +45,22 @@ const SpotlightSection = () => {
   return (
     <section id="spotlight" className="spotlight-section" ref={ref}>
       {/* Background Spotlight Image */}
-      <div className="spotlight-background-image">
+      <motion.div 
+        className="spotlight-background-image"
+        initial={{ x: -100, opacity: 0 }}
+        animate={isInView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }}
+        transition={{ 
+          duration: 1.2, 
+          ease: "easeOut",
+          delay: 0.3
+        }}
+      >
         <img 
           src="/images2/spotlights.png" 
           alt="Spotlight" 
           className="spotlight-bg-img"
         />
-      </div>
+      </motion.div>
       
       {/* PEOPLE.gif positioned at bottom behind top components */}
       <div className="people-background-image">

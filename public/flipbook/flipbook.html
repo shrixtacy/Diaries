@@ -72,9 +72,31 @@
   <script src="turn.js"></script>
   <script>
     $(document).ready(function() {
+      // Get container dimensions for responsive sizing
+      const container = $(".flipbook").parent();
+      const containerWidth = container.width();
+      const containerHeight = container.height();
+      
+      // Calculate responsive dimensions
+      const maxWidth = Math.min(containerWidth * 0.95, 1000);
+      const maxHeight = Math.min(containerHeight * 0.95, 600);
+      const aspectRatio = 1000 / 600; // Original aspect ratio
+      
+      let flipbookWidth, flipbookHeight;
+      
+      if (maxWidth / maxHeight > aspectRatio) {
+        // Height is the limiting factor
+        flipbookHeight = maxHeight;
+        flipbookWidth = maxHeight * aspectRatio;
+      } else {
+        // Width is the limiting factor
+        flipbookWidth = maxWidth;
+        flipbookHeight = maxWidth / aspectRatio;
+      }
+      
       let flipbook = $(".flipbook").turn({
-        width: 1000,
-        height: 600,
+        width: flipbookWidth,
+        height: flipbookHeight,
         autoCenter: true,
         acceleration: true,
         elevation: 50,
@@ -124,6 +146,34 @@
         
         setTimeout(turnNextPage, 500);
       }
+
+      // Function to resize flipbook
+      function resizeFlipbook() {
+        const container = $(".flipbook").parent();
+        const containerWidth = container.width();
+        const containerHeight = container.height();
+        
+        const maxWidth = Math.min(containerWidth * 0.95, 1000);
+        const maxHeight = Math.min(containerHeight * 0.95, 600);
+        const aspectRatio = 1000 / 600;
+        
+        let newWidth, newHeight;
+        
+        if (maxWidth / maxHeight > aspectRatio) {
+          newHeight = maxHeight;
+          newWidth = maxHeight * aspectRatio;
+        } else {
+          newWidth = maxWidth;
+          newHeight = maxWidth / aspectRatio;
+        }
+        
+        flipbook.turn('size', newWidth, newHeight);
+      }
+
+      // Listen for window resize events
+      window.addEventListener('resize', function() {
+        setTimeout(resizeFlipbook, 100);
+      });
 
       // Listen for messages from parent window
       window.addEventListener('message', function(event) {
