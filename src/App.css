@@ -21,6 +21,21 @@ section {
 
 @media (max-width: 768px) {
   section {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
+    min-height: 90vh;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 1rem 0.8rem;
+    min-height: 85vh;
+  }
+}
+
+@media (max-width: 360px) {
+  section {
+    padding: 0.8rem 0.6rem;
+    min-height: 80vh;
   }
 }

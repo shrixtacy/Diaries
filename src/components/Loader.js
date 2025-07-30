@@ -10,7 +10,8 @@ const inspirationalWords = [
   'Journey',
   'Memory',
   'Story',
-  'Create'
+  'Create',
+  'Diaries'
 ];
 
 const Loader = () => {
@@ -20,12 +21,15 @@ const Loader = () => {
     const interval = setInterval(() => {
       setCurrentWordIndex((prev) => {
         if (prev + 1 >= inspirationalWords.length) {
-          clearInterval(interval);
+          // Pause for 2 seconds on the last word before clearing interval
+          setTimeout(() => {
+            clearInterval(interval);
+          }, 2000);
           return prev; // Keep the last word
         }
         return prev + 1;
       });
-    }, 1500); // 1.5 seconds per word
+    }, 1200); // 1.20 seconds per word
 
     return () => clearInterval(interval);
   }, []);

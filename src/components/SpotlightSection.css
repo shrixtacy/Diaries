@@ -337,56 +337,138 @@
   }
   
   .spotlight-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 cards per row on tablets */
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.2rem;
   }
   
   .spotlight-bg-img {
-    height: 70vh; /* Smaller on tablets */
+    height: 70vh;
     left: 0;
   }
   
   .spotlight-container {
-    padding-left: 120px; /* Reduced padding for smaller screens */
+    padding-left: 120px;
   }
 }
 
 @media (max-width: 768px) {
   .spotlight-section {
     padding: 2rem 1rem;
+    min-height: 90vh;
   }
 
   .spotlight-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 cards per row on mobile */
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
   
   .spotlight-card {
     margin: 0 auto;
-    max-width: 100%; /* Full width on mobile */
+    max-width: 100%;
   }
   
   .card-content {
-    padding: 1.2rem;
+    padding: 1rem;
   }
   
   .spotlight-bg-img {
-    height: 60vh; /* Smaller on mobile */
+    height: 60vh;
     left: 0;
   }
   
   .spotlight-container {
-    padding-left: 80px; /* Further reduce padding for mobile */
+    padding-left: 80px;
+  }
+
+  .view-more-spotlights {
+    margin-bottom: 2rem;
+  }
+
+  .view-more-link-content {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
   }
 }
 
 @media (max-width: 480px) {
+  .spotlight-section {
+    padding: 1.5rem 0.8rem;
+    min-height: 85vh;
+  }
+
   .spotlight-grid {
-    grid-template-columns: 1fr; /* 1 card per row on small mobile */
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
   
   .spotlight-container {
-    padding-left: 60px; /* Minimal padding for small screens */
+    padding-left: 60px;
+  }
+
+  .view-more-spotlights {
+    margin-bottom: 1.5rem;
+  }
+
+  .view-more-link-content {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .card-content {
+    padding: 0.8rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-name {
+    font-size: 0.8rem;
+  }
+
+  .card-description {
+    font-size: 0.75rem;
+  }
+
+  .spotlight-btn {
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .spotlight-section {
+    padding: 1rem 0.5rem;
+    min-height: 80vh;
+  }
+
+  .spotlight-container {
+    padding-left: 40px;
+  }
+
+  .view-more-link-content {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .card-content {
+    padding: 0.6rem;
+  }
+
+  .card-title {
+    font-size: 0.9rem;
+  }
+
+  .card-name {
+    font-size: 0.75rem;
+  }
+
+  .card-description {
+    font-size: 0.7rem;
+  }
+
+  .spotlight-btn {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
   }
 }

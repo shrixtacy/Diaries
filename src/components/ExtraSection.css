@@ -537,6 +537,156 @@
   }
 }
 
+@media (max-width: 768px) {
+  .extra-section {
+    padding: 2rem 1rem;
+    min-height: 90vh;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+
+  .timeline-container {
+    margin-bottom: 3rem;
+  }
+
+  .timeline-item {
+    margin-bottom: 3rem;
+  }
+
+  .timeline-item.left {
+    padding-right: 2rem;
+  }
+
+  .timeline-item.right {
+    padding-left: 2rem;
+  }
+
+  .timeline-content {
+    padding: 1.5rem;
+    max-width: 280px;
+  }
+
+  .timeline-year {
+    font-size: 1.3rem;
+  }
+
+  .timeline-title {
+    font-size: 1.1rem;
+  }
+
+  .timeline-description {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .extra-section {
+    padding: 1.5rem 0.8rem;
+    min-height: 85vh;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .timeline-container {
+    margin-bottom: 2rem;
+  }
+
+  .timeline-item {
+    margin-bottom: 2rem;
+  }
+
+  .timeline-item.left {
+    padding-right: 1.5rem;
+  }
+
+  .timeline-item.right {
+    padding-left: 1.5rem;
+  }
+
+  .timeline-content {
+    padding: 1.2rem;
+    max-width: 250px;
+  }
+
+  .timeline-year {
+    font-size: 1.2rem;
+  }
+
+  .timeline-title {
+    font-size: 1rem;
+  }
+
+  .timeline-description {
+    font-size: 0.85rem;
+  }
+
+  .timeline-dot {
+    width: 16px;
+    height: 16px;
+    border-width: 3px;
+  }
+}
+
+@media (max-width: 360px) {
+  .extra-section {
+    padding: 1rem 0.6rem;
+    min-height: 80vh;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .timeline-item.left {
+    padding-right: 1rem;
+  }
+
+  .timeline-item.right {
+    padding-left: 1rem;
+  }
+
+  .timeline-content {
+    padding: 1rem;
+    max-width: 220px;
+  }
+
+  .timeline-year {
+    font-size: 1.1rem;
+  }
+
+  .timeline-title {
+    font-size: 0.9rem;
+  }
+
+  .timeline-description {
+    font-size: 0.8rem;
+  }
+
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+    border-width: 2px;
+  }
+}
+
 @media (max-width: 480px) {
   .cta-section .section-title {
     font-size: 2rem;
